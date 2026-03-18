@@ -3,29 +3,274 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy — Tangram Infinity</title>
+  <title>DrFly — Independent Mobile Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg: #0f0f1a;
+      --mint: #3dffc0;
+      --purple: #7c5cfc;
+      --yellow: #ffd166;
+      --text: rgba(255,255,255,0.88);
+      --text-dim: rgba(255,255,255,0.45);
+      --text-dimmer: rgba(255,255,255,0.2);
+      --border: rgba(255,255,255,0.08);
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #0f0f1a;
-      color: #e0e0e0;
-      line-height: 1.7;
-      padding: 40px 20px 80px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      background-image: radial-gradient(rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 28px 28px;
     }
 
     .container {
-      max-width: 760px;
+      max-width: 960px;
       margin: 0 auto;
+      padding: 0 24px 80px;
     }
+
+    /* ── Pages ── */
+    .page { display: none; }
+    .page.active { display: block; animation: fadeUp 0.4s ease both; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ════════════════════════════
+       HOME
+    ════════════════════════════ */
 
     header {
       text-align: center;
-      margin-bottom: 56px;
+      padding: 90px 0 56px;
     }
 
-    .logo {
+    .logo-text {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(3.2rem, 9vw, 6rem);
+      letter-spacing: -3px;
+      line-height: 1;
+    }
+    .logo-text .dr  { color: var(--text); }
+    .logo-text .fly { color: var(--mint); }
+
+    .tagline {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 5px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-top: 14px;
+    }
+
+    .intro {
+      max-width: 480px;
+      margin: 28px auto 0;
+      font-size: 0.97rem;
+      color: var(--text-dim);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+    .intro strong { color: var(--text); font-weight: 500; }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 52px 0 28px;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .divider-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--mint);
+      opacity: 0.45;
+    }
+
+    .apps-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 4px;
+      color: var(--text-dimmer);
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--accent);
+      border-radius: 0 0 14px 14px;
+      padding: 32px 26px 26px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      background: rgba(255,255,255,0.05);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+    }
+    .card.tangram  { --accent: var(--purple); }
+    .card.sudoku   { --accent: var(--mint); }
+    .card.dumbduel { --accent: var(--yellow); }
+
+    /* ── Icons ── */
+    .app-icon {
+      width: 60px; height: 60px;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tangram-icon { display: flex; align-items: flex-end; gap: 5px; }
+    .tri {
+      width: 0; height: 0;
+      border-left-style: solid; border-right-style: solid; border-bottom-style: solid;
+      border-left-color: transparent; border-right-color: transparent;
+    }
+    .tri-lg { border-left-width: 17px; border-right-width: 17px; border-bottom-width: 30px; border-bottom-color: var(--purple); }
+    .tri-md { border-left-width: 12px; border-right-width: 12px; border-bottom-width: 21px; border-bottom-color: var(--mint); }
+    .tri-sm { border-left-width: 8px;  border-right-width: 8px;  border-bottom-width: 14px; border-bottom-color: var(--yellow); }
+
+    .sudoku-icon {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      width: 50px; height: 50px;
+    }
+    .sc {
+      border-radius: 2px;
+      background: rgba(61,255,192,0.1);
+      border: 1px solid rgba(61,255,192,0.2);
+    }
+    .sc.f { background: var(--mint); border-color: var(--mint); }
+
+    .dice-icon {
+      width: 46px; height: 46px;
+      background: rgba(255,209,102,0.08);
+      border: 1.5px solid rgba(255,209,102,0.4);
+      border-radius: 10px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      padding: 8px;
+      gap: 3px;
+    }
+    .dot { border-radius: 50%; }
+    .dot.on  { background: var(--yellow); }
+    .dot.off { background: transparent; }
+
+    .card-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .card-desc {
+      font-size: 0.87rem;
+      color: var(--text-dim);
+      line-height: 1.65;
+      margin-bottom: 24px;
+      flex: 1;
+    }
+    .btn-policy {
+      display: inline-block;
+      padding: 9px 18px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 6px;
+      align-self: flex-start;
+      cursor: pointer;
+      background: transparent;
+      transition: background 0.15s, color 0.15s;
+    }
+    .btn-policy:hover { background: var(--accent); color: var(--bg); }
+
+    .badge-soon {
+      display: inline-block;
+      padding: 9px 18px;
+      background: rgba(255,209,102,0.08);
+      border: 1px solid rgba(255,209,102,0.2);
+      color: rgba(255,209,102,0.65);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      border-radius: 6px;
+      align-self: flex-start;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 72px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-dimmer);
+      letter-spacing: 1px;
+    }
+    footer a { color: var(--text-dimmer); text-decoration: none; transition: color 0.15s; }
+    footer a:hover { color: var(--mint); }
+
+    /* ════════════════════════════
+       PRIVACY POLICY PAGES
+    ════════════════════════════ */
+
+    .policy-header {
+      text-align: center;
+      padding: 64px 0 48px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      margin-bottom: 40px;
+      transition: color 0.15s;
+    }
+    .back-btn:hover { color: var(--mint); }
+    .back-btn::before { content: '←'; font-size: 1rem; }
+
+    .policy-logo {
       display: flex;
       align-items: flex-end;
       justify-content: center;
@@ -33,212 +278,416 @@
       margin-bottom: 20px;
     }
 
-    .tri {
-      width: 0; height: 0;
-      border-left-style: solid;
-      border-right-style: solid;
-      border-bottom-style: solid;
-      border-left-color: transparent;
-      border-right-color: transparent;
+    /* Sudoku policy logo */
+    .sudoku-logo {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+      width: 66px;
+      height: 66px;
+      margin: 0 auto 20px;
     }
+    .sl { border-radius: 3px; background: rgba(61,255,192,0.1); border: 1px solid rgba(61,255,192,0.2); }
+    .sl.f { background: var(--mint); border-color: var(--mint); }
 
-    .tri-lg  { border-left-width: 22px; border-right-width: 22px; border-bottom-width: 38px; border-bottom-color: #7c5cfc; }
-    .tri-md  { border-left-width: 16px; border-right-width: 16px; border-bottom-width: 27px; border-bottom-color: #3dffc0; }
-    .tri-sm  { border-left-width: 10px; border-right-width: 10px; border-bottom-width: 17px; border-bottom-color: #ffd166; }
-
-    h1 {
-      font-size: 2rem;
-      font-weight: 900;
-      letter-spacing: 5px;
-      color: #ffffff;
+    .policy-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.6rem, 5vw, 2.4rem);
+      letter-spacing: 3px;
+      color: #fff;
       text-transform: uppercase;
     }
 
-    .subtitle {
-      font-size: 0.85rem;
+    .policy-subtitle {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
       letter-spacing: 6px;
-      color: rgba(255,255,255,0.4);
-      margin-top: 4px;
+      color: rgba(255,255,255,0.35);
+      margin-top: 6px;
       text-transform: uppercase;
     }
 
-    .updated {
-      margin-top: 16px;
-      font-size: 0.82rem;
-      color: rgba(255,255,255,0.3);
+    .policy-updated {
+      margin-top: 14px;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.25);
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    .policy-content {
+      max-width: 760px;
+      margin: 0 auto;
     }
 
     section {
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
-      padding: 28px 32px;
-      margin-bottom: 20px;
+      border-radius: 14px;
+      padding: 26px 30px;
+      margin-bottom: 16px;
     }
 
     h2 {
-      font-size: 1rem;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.78rem;
       font-weight: 700;
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      color: #3dffc0;
+      color: var(--mint);
       margin-bottom: 14px;
     }
 
-    p {
-      font-size: 0.95rem;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 10px;
-    }
+    .page-sudoku h2 { color: var(--mint); }
+    .page-tangram h2 { color: var(--purple); }
 
+    p {
+      font-size: 0.93rem;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 10px;
+      line-height: 1.75;
+    }
     p:last-child { margin-bottom: 0; }
 
-    ul {
-      padding-left: 20px;
-      margin-top: 8px;
-    }
-
+    ul { padding-left: 20px; margin-top: 8px; }
     li {
-      font-size: 0.95rem;
-      color: rgba(255,255,255,0.7);
+      font-size: 0.93rem;
+      color: rgba(255,255,255,0.65);
       margin-bottom: 6px;
+      line-height: 1.7;
     }
 
-    a {
-      color: #3dffc0;
-      text-decoration: none;
-    }
-
+    a { color: var(--mint); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
     .contact-box {
-      background: rgba(61,255,192,0.06);
-      border: 1px solid rgba(61,255,192,0.2);
-      border-radius: 12px;
-      padding: 20px 24px;
-      margin-top: 8px;
+      background: rgba(61,255,192,0.05);
+      border: 1px solid rgba(61,255,192,0.18);
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin-top: 10px;
     }
+    .contact-box p { color: rgba(255,255,255,0.75); }
 
-    .contact-box p {
-      color: rgba(255,255,255,0.8);
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 48px;
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.2);
-      letter-spacing: 1px;
+    @media (max-width: 580px) {
+      .apps-grid { grid-template-columns: 1fr; }
+      header { padding: 64px 0 40px; }
     }
   </style>
 </head>
 <body>
   <div class="container">
 
-    <header>
-      <div class="logo">
-        <div class="tri tri-lg"></div>
-        <div class="tri tri-md"></div>
-        <div class="tri tri-sm"></div>
+    <!-- ═══════════════════ HOME ═══════════════════ -->
+    <div class="page active" id="page-home">
+
+      <header>
+        <div class="logo-text">
+          <span class="dr">DR</span><span class="fly">FLY</span>
+        </div>
+        <div class="tagline">Independent Mobile Developer</div>
+        <p class="intro">
+          Solo developer passionate about crafting <strong>mobile games & apps</strong>.
+          Building clean, playful, and polished experiences — one pixel at a time.
+        </p>
+      </header>
+
+      <div class="divider">
+        <div class="divider-dot"></div>
+        <div class="divider-dot"></div>
+        <div class="divider-dot"></div>
       </div>
-      <h1>Tangram Infinity</h1>
-      <div class="subtitle">Privacy Policy</div>
-      <p class="updated">Last updated: March 6, 2026</p>
-    </header>
 
-    <section>
-      <h2>Overview</h2>
-      <p>
-        Tangram Infinity ("the App") is a puzzle game developed by an independent creator.
-        We are committed to protecting your privacy. This policy explains what data is collected,
-        how it is used, and your rights regarding that data.
-      </p>
-    </section>
+      <p class="apps-label">Applications</p>
 
-    <section>
-      <h2>Data We Collect</h2>
-      <p>The App itself does not collect any personal information. However, we use third-party services that may collect data:</p>
-      <ul>
-        <li><strong>Google AdMob</strong> — used to display advertisements. AdMob may collect device identifiers, IP address, and usage data to serve relevant ads.</li>
-        <li><strong>Game progress</strong> — your score and game state are stored <em>locally on your device only</em> using AsyncStorage. This data never leaves your device.</li>
-      </ul>
-    </section>
+      <div class="apps-grid">
 
-    <section>
-      <h2>Advertising</h2>
-      <p>
-        The App displays ads through Google AdMob, including interstitial ads and rewarded video ads.
-        AdMob may use cookies and similar technologies to collect data for ad personalization.
-      </p>
-      <p>
-        We request non-personalized ads where possible. For more information on how Google uses data
-        from apps that use AdMob, please visit:
-        <a href="https://policies.google.com/technologies/partner-sites" target="_blank">
-          policies.google.com/technologies/partner-sites
-        </a>
-      </p>
-    </section>
+        <!-- Tangram Infinity -->
+        <div class="card tangram">
+          <div class="app-icon">
+            <div class="tangram-icon">
+              <div class="tri tri-lg"></div>
+              <div class="tri tri-md"></div>
+              <div class="tri tri-sm"></div>
+            </div>
+          </div>
+          <div class="card-name">Tangram Infinity</div>
+          <p class="card-desc">Minimalist tangram puzzle game. Hundreds of shapes to solve, infinite calm.</p>
+          <button class="btn-policy" onclick="showPage('tangram')" style="--accent: var(--purple);">Privacy Policy</button>
+        </div>
 
-    <section>
-      <h2>Data Sharing</h2>
-      <p>
-        We do not sell, trade, or share your personal data with third parties, except as required
-        by our advertising partner (Google AdMob) as described above.
-      </p>
-    </section>
+        <!-- Sudoku Infinity -->
+        <div class="card sudoku">
+          <div class="app-icon">
+            <div class="sudoku-icon">
+              <div class="sc f"></div><div class="sc"></div><div class="sc f"></div>
+              <div class="sc"></div><div class="sc f"></div><div class="sc"></div>
+              <div class="sc f"></div><div class="sc"></div><div class="sc f"></div>
+            </div>
+          </div>
+          <div class="card-name">Sudoku Infinity</div>
+          <p class="card-desc">Classic Sudoku reimagined. Endless grids, clean interface, sharp logic.</p>
+          <button class="btn-policy" onclick="showPage('sudoku')" style="--accent: var(--mint);">Privacy Policy</button>
+        </div>
 
-    <section>
-      <h2>Children's Privacy</h2>
-      <p>
-        The App is not directed at children under the age of 13. We do not knowingly collect
-        personal information from children under 13. If you believe a child has provided us with
-        personal information, please contact us so we can delete it.
-      </p>
-    </section>
+        <!-- Dumb Duel -->
+        <div class="card dumbduel">
+          <div class="app-icon">
+            <div class="dice-icon">
+              <div class="dot on"></div><div class="dot off"></div><div class="dot on"></div>
+              <div class="dot on"></div><div class="dot off"></div><div class="dot on"></div>
+              <div class="dot on"></div><div class="dot off"></div><div class="dot on"></div>
+            </div>
+          </div>
+          <div class="card-name">Dumb Duel</div>
+          <p class="card-desc">Absurd tactical 1v1 duels. Dice, cards, chaos — and questionable decisions.</p>
+          <span class="badge-soon">Coming Soon</span>
+        </div>
 
-    <section>
-      <h2>Data Retention</h2>
-      <p>
-        Local game data (score, saved game) is stored on your device and can be cleared at any time
-        by uninstalling the App. We do not retain any data on our own servers.
-      </p>
-    </section>
-
-    <section>
-      <h2>Your Rights</h2>
-      <p>Depending on your location, you may have the right to:</p>
-      <ul>
-        <li>Access the personal data collected about you</li>
-        <li>Request deletion of your data</li>
-        <li>Opt out of personalized advertising (via your device settings)</li>
-      </ul>
-      <p>
-        On Android, you can opt out of personalized ads in <strong>Settings → Google → Ads</strong>.
-        On iOS, go to <strong>Settings → Privacy → Tracking</strong>.
-      </p>
-    </section>
-
-    <section>
-      <h2>Changes to This Policy</h2>
-      <p>
-        We may update this Privacy Policy from time to time. Any changes will be reflected
-        on this page with an updated date. Continued use of the App after changes constitutes
-        acceptance of the new policy.
-      </p>
-    </section>
-
-    <section>
-      <h2>Contact</h2>
-      <p>If you have any questions about this Privacy Policy, please contact us:</p>
-      <div class="contact-box">
-        <p><strong>Tangram Infinity — Independent Developer drfly.prog@gmail.com </strong></p>
       </div>
-    </section>
 
-    <footer>
-      &copy; 2026 Tangram Infinity &mdash; All rights reserved
-    </footer>
+      <footer>
+        <p>&copy; 2026 DrFly &mdash; <a href="mailto:drfly.prog@gmail.com">drfly.prog@gmail.com</a></p>
+      </footer>
+
+    </div>
+
+    <!-- ═══════════════════ TANGRAM INFINITY ═══════════════════ -->
+    <div class="page page-tangram" id="page-tangram">
+      <div class="policy-content">
+
+        <button class="back-btn" onclick="showPage('home')">All Apps</button>
+
+        <div class="policy-header">
+          <div class="policy-logo">
+            <div class="tri tri-lg"></div>
+            <div class="tri tri-md"></div>
+            <div class="tri tri-sm"></div>
+          </div>
+          <h1 class="policy-title">Tangram Infinity</h1>
+          <div class="policy-subtitle">Privacy Policy</div>
+          <p class="policy-updated">Last updated: March 6, 2026</p>
+        </div>
+
+        <section>
+          <h2>Overview</h2>
+          <p>
+            Tangram Infinity ("the App") is a puzzle game developed by an independent creator.
+            We are committed to protecting your privacy. This policy explains what data is collected,
+            how it is used, and your rights regarding that data.
+          </p>
+        </section>
+
+        <section>
+          <h2>Data We Collect</h2>
+          <p>The App itself does not collect any personal information. However, we use third-party services that may collect data:</p>
+          <ul>
+            <li><strong>Google AdMob</strong> — used to display advertisements. AdMob may collect device identifiers, IP address, and usage data to serve relevant ads.</li>
+            <li><strong>Game progress</strong> — your score and game state are stored <em>locally on your device only</em> using AsyncStorage. This data never leaves your device.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Advertising</h2>
+          <p>
+            The App displays ads through Google AdMob, including interstitial ads and rewarded video ads.
+            AdMob may use cookies and similar technologies to collect data for ad personalization.
+          </p>
+          <p>
+            We request non-personalized ads where possible. For more information on how Google uses data
+            from apps that use AdMob, please visit:
+            <a href="https://policies.google.com/technologies/partner-sites" target="_blank">
+              policies.google.com/technologies/partner-sites
+            </a>
+          </p>
+        </section>
+
+        <section>
+          <h2>Data Sharing</h2>
+          <p>
+            We do not sell, trade, or share your personal data with third parties, except as required
+            by our advertising partner (Google AdMob) as described above.
+          </p>
+        </section>
+
+        <section>
+          <h2>Children's Privacy</h2>
+          <p>
+            The App is not directed at children under the age of 13. We do not knowingly collect
+            personal information from children under 13. If you believe a child has provided us with
+            personal information, please contact us so we can delete it.
+          </p>
+        </section>
+
+        <section>
+          <h2>Data Retention</h2>
+          <p>
+            Local game data (score, saved game) is stored on your device and can be cleared at any time
+            by uninstalling the App. We do not retain any data on our own servers.
+          </p>
+        </section>
+
+        <section>
+          <h2>Your Rights</h2>
+          <p>Depending on your location, you may have the right to:</p>
+          <ul>
+            <li>Access the personal data collected about you</li>
+            <li>Request deletion of your data</li>
+            <li>Opt out of personalized advertising (via your device settings)</li>
+          </ul>
+          <p>
+            On Android, you can opt out of personalized ads in <strong>Settings → Google → Ads</strong>.
+            On iOS, go to <strong>Settings → Privacy → Tracking</strong>.
+          </p>
+        </section>
+
+        <section>
+          <h2>Changes to This Policy</h2>
+          <p>
+            We may update this Privacy Policy from time to time. Any changes will be reflected
+            on this page with an updated date. Continued use of the App after changes constitutes
+            acceptance of the new policy.
+          </p>
+        </section>
+
+        <section>
+          <h2>Contact</h2>
+          <p>If you have any questions about this Privacy Policy, please contact us:</p>
+          <div class="contact-box">
+            <p><strong>Tangram Infinity — Independent Developer</strong><br>
+            <a href="mailto:drfly.prog@gmail.com">drfly.prog@gmail.com</a></p>
+          </div>
+        </section>
+
+        <footer>
+          <p>&copy; 2026 DrFly &mdash; <a href="mailto:drfly.prog@gmail.com">drfly.prog@gmail.com</a></p>
+        </footer>
+
+      </div>
+    </div>
+
+    <!-- ═══════════════════ SUDOKU INFINITY ═══════════════════ -->
+    <div class="page page-sudoku" id="page-sudoku">
+      <div class="policy-content">
+
+        <button class="back-btn" onclick="showPage('home')">All Apps</button>
+
+        <div class="policy-header">
+          <div class="sudoku-logo">
+            <div class="sl f"></div><div class="sl"></div><div class="sl f"></div>
+            <div class="sl"></div><div class="sl f"></div><div class="sl"></div>
+            <div class="sl f"></div><div class="sl"></div><div class="sl f"></div>
+          </div>
+          <h1 class="policy-title">Sudoku Infinity</h1>
+          <div class="policy-subtitle">Privacy Policy</div>
+          <p class="policy-updated">Last updated: March 6, 2026</p>
+        </div>
+
+        <section>
+          <h2>Overview</h2>
+          <p>
+            Sudoku Infinity ("the App") is a puzzle game developed by an independent creator.
+            We are committed to protecting your privacy. This policy explains what data is collected,
+            how it is used, and your rights regarding that data.
+          </p>
+        </section>
+
+        <section>
+          <h2>Data We Collect</h2>
+          <p>The App itself does not collect any personal information. However, we use third-party services that may collect data:</p>
+          <ul>
+            <li><strong>Google AdMob</strong> — used to display advertisements. AdMob may collect device identifiers, IP address, and usage data to serve relevant ads.</li>
+            <li><strong>Game progress</strong> — your score and game state are stored <em>locally on your device only</em> using AsyncStorage. This data never leaves your device.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Advertising</h2>
+          <p>
+            The App displays ads through Google AdMob, including interstitial ads and rewarded video ads.
+            AdMob may use cookies and similar technologies to collect data for ad personalization.
+          </p>
+          <p>
+            We request non-personalized ads where possible. For more information on how Google uses data
+            from apps that use AdMob, please visit:
+            <a href="https://policies.google.com/technologies/partner-sites" target="_blank">
+              policies.google.com/technologies/partner-sites
+            </a>
+          </p>
+        </section>
+
+        <section>
+          <h2>Data Sharing</h2>
+          <p>
+            We do not sell, trade, or share your personal data with third parties, except as required
+            by our advertising partner (Google AdMob) as described above.
+          </p>
+        </section>
+
+        <section>
+          <h2>Children's Privacy</h2>
+          <p>
+            The App is not directed at children under the age of 13. We do not knowingly collect
+            personal information from children under 13. If you believe a child has provided us with
+            personal information, please contact us so we can delete it.
+          </p>
+        </section>
+
+        <section>
+          <h2>Data Retention</h2>
+          <p>
+            Local game data (score, saved game) is stored on your device and can be cleared at any time
+            by uninstalling the App. We do not retain any data on our own servers.
+          </p>
+        </section>
+
+        <section>
+          <h2>Your Rights</h2>
+          <p>Depending on your location, you may have the right to:</p>
+          <ul>
+            <li>Access the personal data collected about you</li>
+            <li>Request deletion of your data</li>
+            <li>Opt out of personalized advertising (via your device settings)</li>
+          </ul>
+          <p>
+            On Android, you can opt out of personalized ads in <strong>Settings → Google → Ads</strong>.
+            On iOS, go to <strong>Settings → Privacy → Tracking</strong>.
+          </p>
+        </section>
+
+        <section>
+          <h2>Changes to This Policy</h2>
+          <p>
+            We may update this Privacy Policy from time to time. Any changes will be reflected
+            on this page with an updated date. Continued use of the App after changes constitutes
+            acceptance of the new policy.
+          </p>
+        </section>
+
+        <section>
+          <h2>Contact</h2>
+          <p>If you have any questions about this Privacy Policy, please contact us:</p>
+          <div class="contact-box">
+            <p><strong>Sudoku Infinity — Independent Developer</strong><br>
+            <a href="mailto:drfly.prog@gmail.com">drfly.prog@gmail.com</a></p>
+          </div>
+        </section>
+
+        <footer>
+          <p>&copy; 2026 DrFly &mdash; <a href="mailto:drfly.prog@gmail.com">drfly.prog@gmail.com</a></p>
+        </footer>
+
+      </div>
+    </div>
 
   </div>
+
+  <script>
+    function showPage(name) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page-' + name).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
 </body>
 </html>
