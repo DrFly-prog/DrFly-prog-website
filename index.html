@@ -13,6 +13,7 @@
       --mint: #3dffc0;
       --purple: #7c5cfc;
       --yellow: #ffd166;
+      --red: #ff3b3b;
       --text: rgba(255,255,255,0.88);
       --text-dim: rgba(255,255,255,0.45);
       --text-dimmer: rgba(255,255,255,0.2);
@@ -114,7 +115,7 @@
 
     .apps-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 16px;
     }
 
@@ -134,9 +135,10 @@
       background: rgba(255,255,255,0.05);
       box-shadow: 0 24px 60px rgba(0,0,0,0.45);
     }
-    .card.tangram  { --accent: var(--purple); }
-    .card.sudoku   { --accent: var(--mint); }
-    .card.dumbduel { --accent: var(--yellow); }
+    .card.tangram      { --accent: var(--purple); }
+    .card.sudoku       { --accent: var(--mint); }
+    .card.dumbduel     { --accent: var(--yellow); }
+    .card.ballcontam   { --accent: var(--red); }
 
     /* ── Icons ── */
     .app-icon {
@@ -147,6 +149,7 @@
       justify-content: center;
     }
 
+    /* Tangram */
     .tangram-icon { display: flex; align-items: flex-end; gap: 5px; }
     .tri {
       width: 0; height: 0;
@@ -157,19 +160,17 @@
     .tri-md { border-left-width: 12px; border-right-width: 12px; border-bottom-width: 21px; border-bottom-color: var(--mint); }
     .tri-sm { border-left-width: 8px;  border-right-width: 8px;  border-bottom-width: 14px; border-bottom-color: var(--yellow); }
 
+    /* Sudoku */
     .sudoku-icon {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 4px;
       width: 50px; height: 50px;
     }
-    .sc {
-      border-radius: 2px;
-      background: rgba(61,255,192,0.1);
-      border: 1px solid rgba(61,255,192,0.2);
-    }
+    .sc { border-radius: 2px; background: rgba(61,255,192,0.1); border: 1px solid rgba(61,255,192,0.2); }
     .sc.f { background: var(--mint); border-color: var(--mint); }
 
+    /* Dice */
     .dice-icon {
       width: 46px; height: 46px;
       background: rgba(255,209,102,0.08);
@@ -178,16 +179,40 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(3, 1fr);
-      padding: 8px;
-      gap: 3px;
+      padding: 8px; gap: 3px;
     }
     .dot { border-radius: 50%; }
     .dot.on  { background: var(--yellow); }
     .dot.off { background: transparent; }
 
+    /* Virus (Ball Contamination) */
+    .virus-icon {
+      position: relative;
+      width: 54px; height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .virus-core {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: var(--mint);
+      box-shadow: 0 0 10px rgba(61,255,192,0.5);
+    }
+    .virus-orb {
+      position: absolute;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+    }
+    .vo1 { background: #ff3b3b; top: 2px;   right: 6px;  }
+    .vo2 { background: #ff9500; bottom: 4px; left: 4px;   }
+    .vo3 { background: #bf5af2; bottom: 4px; right: 4px;  }
+    .vo4 { background: #ffd60a; top: 10px;  left: 6px;   }
+
+    /* ── Card content ── */
     .card-name {
       font-family: 'Syne', sans-serif;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: #fff;
       margin-bottom: 8px;
@@ -283,12 +308,36 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 5px;
-      width: 66px;
-      height: 66px;
+      width: 66px; height: 66px;
       margin: 0 auto 20px;
     }
     .sl { border-radius: 3px; background: rgba(61,255,192,0.1); border: 1px solid rgba(61,255,192,0.2); }
     .sl.f { background: var(--mint); border-color: var(--mint); }
+
+    /* Virus policy logo */
+    .virus-logo {
+      position: relative;
+      width: 70px; height: 70px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .vlc {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--mint);
+      box-shadow: 0 0 14px rgba(61,255,192,0.5);
+    }
+    .vlo {
+      position: absolute;
+      width: 15px; height: 15px;
+      border-radius: 50%;
+    }
+    .vlo1 { background: #ff3b3b; top: 2px;   right: 8px;  }
+    .vlo2 { background: #ff9500; bottom: 5px; left: 6px;   }
+    .vlo3 { background: #bf5af2; bottom: 5px; right: 6px;  }
+    .vlo4 { background: #ffd60a; top: 12px;  left: 8px;   }
 
     .policy-title {
       font-family: 'Syne', sans-serif;
@@ -338,8 +387,9 @@
       margin-bottom: 14px;
     }
 
-    .page-sudoku h2 { color: var(--mint); }
     .page-tangram h2 { color: var(--purple); }
+    .page-sudoku h2  { color: var(--mint); }
+    .page-ballcontam h2 { color: var(--red); }
 
     p {
       font-size: 0.93rem;
@@ -370,8 +420,11 @@
     .contact-box p { color: rgba(255,255,255,0.75); }
 
     @media (max-width: 580px) {
-      .apps-grid { grid-template-columns: 1fr; }
+      .apps-grid { grid-template-columns: 1fr 1fr; }
       header { padding: 64px 0 40px; }
+    }
+    @media (max-width: 380px) {
+      .apps-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -430,6 +483,22 @@
           <button class="btn-policy" onclick="showPage('sudoku')" style="--accent: var(--mint);">Privacy Policy</button>
         </div>
 
+        <!-- Ball Contamination -->
+        <div class="card ballcontam">
+          <div class="app-icon">
+            <div class="virus-icon">
+              <div class="virus-core"></div>
+              <div class="virus-orb vo1"></div>
+              <div class="virus-orb vo2"></div>
+              <div class="virus-orb vo3"></div>
+              <div class="virus-orb vo4"></div>
+            </div>
+          </div>
+          <div class="card-name">Ball Contamination</div>
+          <p class="card-desc">Physics puzzle game. Infect all the balls — chain reactions, obstacles, chaos.</p>
+          <button class="btn-policy" onclick="showPage('ballcontam')" style="--accent: var(--red);">Privacy Policy</button>
+        </div>
+
         <!-- Dumb Duel -->
         <div class="card dumbduel">
           <div class="app-icon">
@@ -471,11 +540,7 @@
 
         <section>
           <h2>Overview</h2>
-          <p>
-            Tangram Infinity ("the App") is a puzzle game developed by an independent creator.
-            We are committed to protecting your privacy. This policy explains what data is collected,
-            how it is used, and your rights regarding that data.
-          </p>
+          <p>Tangram Infinity ("the App") is a puzzle game developed by an independent creator. We are committed to protecting your privacy. This policy explains what data is collected, how it is used, and your rights regarding that data.</p>
         </section>
 
         <section>
@@ -489,42 +554,23 @@
 
         <section>
           <h2>Advertising</h2>
-          <p>
-            The App displays ads through Google AdMob, including interstitial ads and rewarded video ads.
-            AdMob may use cookies and similar technologies to collect data for ad personalization.
-          </p>
-          <p>
-            We request non-personalized ads where possible. For more information on how Google uses data
-            from apps that use AdMob, please visit:
-            <a href="https://policies.google.com/technologies/partner-sites" target="_blank">
-              policies.google.com/technologies/partner-sites
-            </a>
-          </p>
+          <p>The App displays ads through Google AdMob, including interstitial ads and rewarded video ads. AdMob may use cookies and similar technologies to collect data for ad personalization.</p>
+          <p>We request non-personalized ads where possible. For more information on how Google uses data from apps that use AdMob, please visit: <a href="https://policies.google.com/technologies/partner-sites" target="_blank">policies.google.com/technologies/partner-sites</a></p>
         </section>
 
         <section>
           <h2>Data Sharing</h2>
-          <p>
-            We do not sell, trade, or share your personal data with third parties, except as required
-            by our advertising partner (Google AdMob) as described above.
-          </p>
+          <p>We do not sell, trade, or share your personal data with third parties, except as required by our advertising partner (Google AdMob) as described above.</p>
         </section>
 
         <section>
           <h2>Children's Privacy</h2>
-          <p>
-            The App is not directed at children under the age of 13. We do not knowingly collect
-            personal information from children under 13. If you believe a child has provided us with
-            personal information, please contact us so we can delete it.
-          </p>
+          <p>The App is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, please contact us so we can delete it.</p>
         </section>
 
         <section>
           <h2>Data Retention</h2>
-          <p>
-            Local game data (score, saved game) is stored on your device and can be cleared at any time
-            by uninstalling the App. We do not retain any data on our own servers.
-          </p>
+          <p>Local game data (score, saved game) is stored on your device and can be cleared at any time by uninstalling the App. We do not retain any data on our own servers.</p>
         </section>
 
         <section>
@@ -535,19 +581,12 @@
             <li>Request deletion of your data</li>
             <li>Opt out of personalized advertising (via your device settings)</li>
           </ul>
-          <p>
-            On Android, you can opt out of personalized ads in <strong>Settings → Google → Ads</strong>.
-            On iOS, go to <strong>Settings → Privacy → Tracking</strong>.
-          </p>
+          <p>On Android, you can opt out of personalized ads in <strong>Settings → Google → Ads</strong>. On iOS, go to <strong>Settings → Privacy → Tracking</strong>.</p>
         </section>
 
         <section>
           <h2>Changes to This Policy</h2>
-          <p>
-            We may update this Privacy Policy from time to time. Any changes will be reflected
-            on this page with an updated date. Continued use of the App after changes constitutes
-            acceptance of the new policy.
-          </p>
+          <p>We may update this Privacy Policy from time to time. Any changes will be reflected on this page with an updated date. Continued use of the App after changes constitutes acceptance of the new policy.</p>
         </section>
 
         <section>
@@ -585,11 +624,7 @@
 
         <section>
           <h2>Overview</h2>
-          <p>
-            Sudoku Infinity ("the App") is a puzzle game developed by an independent creator.
-            We are committed to protecting your privacy. This policy explains what data is collected,
-            how it is used, and your rights regarding that data.
-          </p>
+          <p>Sudoku Infinity ("the App") is a puzzle game developed by an independent creator. We are committed to protecting your privacy. This policy explains what data is collected, how it is used, and your rights regarding that data.</p>
         </section>
 
         <section>
@@ -603,42 +638,23 @@
 
         <section>
           <h2>Advertising</h2>
-          <p>
-            The App displays ads through Google AdMob, including interstitial ads and rewarded video ads.
-            AdMob may use cookies and similar technologies to collect data for ad personalization.
-          </p>
-          <p>
-            We request non-personalized ads where possible. For more information on how Google uses data
-            from apps that use AdMob, please visit:
-            <a href="https://policies.google.com/technologies/partner-sites" target="_blank">
-              policies.google.com/technologies/partner-sites
-            </a>
-          </p>
+          <p>The App displays ads through Google AdMob, including interstitial ads and rewarded video ads. AdMob may use cookies and similar technologies to collect data for ad personalization.</p>
+          <p>We request non-personalized ads where possible. For more information on how Google uses data from apps that use AdMob, please visit: <a href="https://policies.google.com/technologies/partner-sites" target="_blank">policies.google.com/technologies/partner-sites</a></p>
         </section>
 
         <section>
           <h2>Data Sharing</h2>
-          <p>
-            We do not sell, trade, or share your personal data with third parties, except as required
-            by our advertising partner (Google AdMob) as described above.
-          </p>
+          <p>We do not sell, trade, or share your personal data with third parties, except as required by our advertising partner (Google AdMob) as described above.</p>
         </section>
 
         <section>
           <h2>Children's Privacy</h2>
-          <p>
-            The App is not directed at children under the age of 13. We do not knowingly collect
-            personal information from children under 13. If you believe a child has provided us with
-            personal information, please contact us so we can delete it.
-          </p>
+          <p>The App is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, please contact us so we can delete it.</p>
         </section>
 
         <section>
           <h2>Data Retention</h2>
-          <p>
-            Local game data (score, saved game) is stored on your device and can be cleared at any time
-            by uninstalling the App. We do not retain any data on our own servers.
-          </p>
+          <p>Local game data (score, saved game) is stored on your device and can be cleared at any time by uninstalling the App. We do not retain any data on our own servers.</p>
         </section>
 
         <section>
@@ -649,19 +665,12 @@
             <li>Request deletion of your data</li>
             <li>Opt out of personalized advertising (via your device settings)</li>
           </ul>
-          <p>
-            On Android, you can opt out of personalized ads in <strong>Settings → Google → Ads</strong>.
-            On iOS, go to <strong>Settings → Privacy → Tracking</strong>.
-          </p>
+          <p>On Android, you can opt out of personalized ads in <strong>Settings → Google → Ads</strong>. On iOS, go to <strong>Settings → Privacy → Tracking</strong>.</p>
         </section>
 
         <section>
           <h2>Changes to This Policy</h2>
-          <p>
-            We may update this Privacy Policy from time to time. Any changes will be reflected
-            on this page with an updated date. Continued use of the App after changes constitutes
-            acceptance of the new policy.
-          </p>
+          <p>We may update this Privacy Policy from time to time. Any changes will be reflected on this page with an updated date. Continued use of the App after changes constitutes acceptance of the new policy.</p>
         </section>
 
         <section>
@@ -669,6 +678,92 @@
           <p>If you have any questions about this Privacy Policy, please contact us:</p>
           <div class="contact-box">
             <p><strong>Sudoku Infinity — Independent Developer</strong><br>
+            <a href="mailto:drfly.prog@gmail.com">drfly.prog@gmail.com</a></p>
+          </div>
+        </section>
+
+        <footer>
+          <p>&copy; 2026 DrFly &mdash; <a href="mailto:drfly.prog@gmail.com">drfly.prog@gmail.com</a></p>
+        </footer>
+
+      </div>
+    </div>
+
+    <!-- ═══════════════════ BALL CONTAMINATION ═══════════════════ -->
+    <div class="page page-ballcontam" id="page-ballcontam">
+      <div class="policy-content">
+
+        <button class="back-btn" onclick="showPage('home')">All Apps</button>
+
+        <div class="policy-header">
+          <div class="virus-logo">
+            <div class="vlc"></div>
+            <div class="vlo vlo1"></div>
+            <div class="vlo vlo2"></div>
+            <div class="vlo vlo3"></div>
+            <div class="vlo vlo4"></div>
+          </div>
+          <h1 class="policy-title">Ball Contamination</h1>
+          <div class="policy-subtitle">Privacy Policy</div>
+          <p class="policy-updated">Last updated: March 6, 2026</p>
+        </div>
+
+        <section>
+          <h2>Overview</h2>
+          <p>Ball Contamination ("the App") is a physics puzzle game developed by an independent creator. We are committed to protecting your privacy. This policy explains what data is collected, how it is used, and your rights regarding that data.</p>
+        </section>
+
+        <section>
+          <h2>Data We Collect</h2>
+          <p>The App itself does not collect any personal information. However, we use third-party services that may collect data:</p>
+          <ul>
+            <li><strong>Google AdMob</strong> — used to display advertisements. AdMob may collect device identifiers, IP address, and usage data to serve relevant ads.</li>
+            <li><strong>Game progress</strong> — your score and game state are stored <em>locally on your device only</em> using AsyncStorage. This data never leaves your device.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Advertising</h2>
+          <p>The App displays ads through Google AdMob, including interstitial ads and rewarded video ads. AdMob may use cookies and similar technologies to collect data for ad personalization.</p>
+          <p>We request non-personalized ads where possible. For more information on how Google uses data from apps that use AdMob, please visit: <a href="https://policies.google.com/technologies/partner-sites" target="_blank">policies.google.com/technologies/partner-sites</a></p>
+        </section>
+
+        <section>
+          <h2>Data Sharing</h2>
+          <p>We do not sell, trade, or share your personal data with third parties, except as required by our advertising partner (Google AdMob) as described above.</p>
+        </section>
+
+        <section>
+          <h2>Children's Privacy</h2>
+          <p>The App is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, please contact us so we can delete it.</p>
+        </section>
+
+        <section>
+          <h2>Data Retention</h2>
+          <p>Local game data (score, saved game) is stored on your device and can be cleared at any time by uninstalling the App. We do not retain any data on our own servers.</p>
+        </section>
+
+        <section>
+          <h2>Your Rights</h2>
+          <p>Depending on your location, you may have the right to:</p>
+          <ul>
+            <li>Access the personal data collected about you</li>
+            <li>Request deletion of your data</li>
+            <li>Opt out of personalized advertising (via your device settings)</li>
+          </ul>
+          <p>On Android, you can opt out of personalized ads in <strong>Settings → Google → Ads</strong>. On iOS, go to <strong>Settings → Privacy → Tracking</strong>.</p>
+        </section>
+
+        <section>
+          <h2>Changes to This Policy</h2>
+          <p>We may update this Privacy Policy from time to time. Any changes will be reflected on this page with an updated date. Continued use of the App after changes constitutes acceptance of the new policy.</p>
+        </section>
+
+        <section>
+          <h2>Contact</h2>
+          <p>If you have any questions about this Privacy Policy, please contact us:</p>
+          <div class="contact-box">
+            <p><strong>Ball Contamination — Independent Developer</strong><br>
             <a href="mailto:drfly.prog@gmail.com">drfly.prog@gmail.com</a></p>
           </div>
         </section>
