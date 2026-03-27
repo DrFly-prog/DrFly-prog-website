@@ -127,6 +127,16 @@
   .about-card-title { font-size:14px; font-weight:500; margin-bottom:4px; color:var(--text); }
   .about-card-text { font-size:13px; color:var(--text-muted); line-height:1.6; font-weight:300; }
 
+  /* BETA */
+  #beta { background:var(--dark2); }
+  .beta-inner { max-width:780px; margin:0 auto; text-align:center; }
+  .beta-box { display:inline-flex; flex-direction:column; align-items:center; gap:20px; background:none; border:none; border-radius:20px; padding:40px 48px; }
+  .beta-icon { font-size:32px; line-height:1; }
+  .beta-box h2 { font-size:24px; font-weight:600; color:var(--text); margin:0; }
+  .beta-box p { font-size:15px; color:var(--text-muted); line-height:1.7; font-weight:300; margin:0; max-width:480px; }
+  .beta-btn { display:inline-flex; align-items:center; gap:10px; padding:13px 28px; background:var(--purple); border-radius:40px; color:#fff; text-decoration:none; font-size:14px; font-weight:600; letter-spacing:0.04em; transition:opacity 0.2s, transform 0.2s; }
+  .beta-btn:hover { opacity:0.85; transform:translateY(-2px); }
+
   /* CONTACT */
   #contact { background:var(--dark); text-align:center; }
   .contact-inner { max-width:680px; margin:0 auto; }
@@ -190,6 +200,7 @@
   <ul>
     <li><a href="#games">Games</a></li>
     <li><a href="#about">About</a></li>
+    <li><a href="#beta">Beta</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -226,7 +237,7 @@
     <p class="section-desc">Puzzle games designed for minds that never want to stop. Each one endlessly replayable, beautifully minimal.</p>
   </div>
   <div class="games-grid">
-
+<!-- GAMES-START -->
     <div class="game-card fade-up" style="transition-delay:0.1s">
       <div class="game-card-thumb">
         <img src="screen-tangram.png" alt="Tangram Infinity">
@@ -268,28 +279,7 @@
         <div class="play-badge-text"><span>GET IT ON</span><span>Google Play</span></div>
       </a>
     </div>
-
-    <div class="game-card fade-up" style="transition-delay:0.3s">
-      <div class="game-card-thumb">
-        <img src="screen-ball.png" alt="Ball Contamination">
-        <span class="game-card-status status-test">In testing</span>
-      </div>
-      <div class="game-card-body">
-        <div class="game-card-icon" style="background:none;padding:0;overflow:hidden;"><img src="logo-ball.png" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:10px;"></div>
-        <div class="game-card-name">Ball Contamination</div>
-        <div class="game-card-desc">Physics puzzle game. Shoot the right ball to trigger a chain reaction and contaminate them all.</div>
-        <div class="game-card-tag">
-          <span style="width:6px;height:6px;border-radius:50%;background:var(--yellow);display:inline-block"></span>
-          Google Play testing phase
-        </div>
-        <button class="policy-link" onclick="openModal('ball')">Privacy Policy</button>
-      </div>
-      <a href="#" class="play-badge" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.18 23.76c.3.17.65.19.97.07L14.88 12 3.08.17A1.1 1.1 0 0 0 3 .65v22.7c0 .15.06.29.18.41z" fill="#EA4335"/><path d="M18.97 8.3 15.6 6.4 3.18.17A.98.98 0 0 0 3 .06L14.88 12l4.09-3.7z" fill="#FBBC04"/><path d="M18.97 15.7 14.88 12 3 23.94c.06-.04.12-.1.18-.18l12.42-6.23 3.37-1.83z" fill="#34A853"/><path d="M21 9.27l-2.03-1.06-4.09 3.79 4.09 3.7L21 14.64c.6-.33.97-.96.97-1.67 0-.72-.37-1.36-.97-1.7z" fill="#4285F4"/></svg>
-        <div class="play-badge-text"><span>GET IT ON</span><span>Google Play</span></div>
-      </a>
-    </div>
-
+<!-- GAMES-END -->
   </div>
 </section>
 
@@ -334,6 +324,24 @@
 
 <div class="divider-line"></div>
 
+<!-- BETA -->
+<section id="beta">
+  <div class="beta-inner fade-up">
+    <p class="section-label" style="justify-content:center">Early Access</p>
+    <div class="beta-box">
+      <div class="beta-icon">🧪</div>
+      <h2>Join the beta testers</h2>
+      <p>Want to play the games before they go live and share your feedback? Join the DrFly Studio testing group — early access, first look at updates, and a direct line to the developer.</p>
+      <a href="https://groups.google.com/g/studio-drfly" target="_blank" class="beta-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        Join the group
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="divider-line"></div>
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner fade-up">
@@ -357,13 +365,16 @@
   <div>© 2026 DrFly Game Studio</div>
   <div class="footer-links">
     <a href="mailto:drfly.prog@gmail.com">Contact</a>
-    <button class="footer-btn" onclick="openModal('tangram')">Tangram — Privacy</button>
-    <button class="footer-btn" onclick="openModal('sudoku')">Sudoku — Privacy</button>
-    <button class="footer-btn" onclick="openModal('ball')">Ball — Privacy</button>
+<!-- FOOTER-LINKS-START -->
+    <button class="footer-btn" onclick="openModal('tangram')">Tangram Infinity — Privacy</button>
+    <button class="footer-btn" onclick="openModal('sudoku')">Sudoku Infinity — Privacy</button>
+    <button class="footer-btn" onclick="openModal('ball')">Ball Contamination — Privacy</button>
+<!-- FOOTER-LINKS-END -->
   </div>
 </footer>
 
-<!-- MODAL: TANGRAM -->
+<!-- MODALS-START -->
+<!-- MODAL: TANGRAM INFINITY -->
 <div class="modal-overlay" id="modal-tangram" onclick="if(event.target===this)closeModal('tangram')">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('tangram')">✕</button>
@@ -372,32 +383,32 @@
     <div class="modal-date">Last updated: March 6, 2026</div>
     <div class="modal-body">
       <h2>Overview</h2>
-      <p>Tangram Infinity is a puzzle game developed by an independent creator. We are committed to protecting your privacy. This policy explains what data is collected, how it is used, and your rights regarding that data.</p>
-      <h2>Data We Collect</h2>
-      <p>The App itself does not collect any personal information. However, we use third-party services that may collect data:</p>
-      <ul>
-        <li><strong>Google AdMob</strong> — used to display advertisements. AdMob may collect device identifiers, IP address, and usage data to serve relevant ads.</li>
-        <li><strong>Game progress</strong> — your score and game state are stored locally on your device only using AsyncStorage. This data never leaves your device.</li>
-      </ul>
-      <h2>Advertising</h2>
-      <p>The App displays ads through Google AdMob, including interstitial and rewarded video ads. We request non-personalized ads where possible. For more information: <a href="https://policies.google.com/technologies/partner-sites" target="_blank">policies.google.com/technologies/partner-sites</a></p>
-      <h2>Data Sharing</h2>
-      <p>We do not sell, trade, or share your personal data with third parties, except as required by Google AdMob as described above.</p>
-      <h2>Children's Privacy</h2>
-      <p>The App is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, please contact us so we can delete it.</p>
-      <h2>Data Retention</h2>
-      <p>Local game data is stored on your device and can be cleared at any time by uninstalling the App. We do not retain any data on our own servers.</p>
-      <h2>Your Rights</h2>
-      <p>Depending on your location, you may have the right to access, delete or opt out of personalized advertising. On Android: Settings → Google → Ads. On iOS: Settings → Privacy → Tracking.</p>
-      <h2>Changes to This Policy</h2>
-      <p>We may update this Privacy Policy from time to time. Continued use of the App after changes constitutes acceptance of the new policy.</p>
-      <h2>Contact</h2>
-      <p><a href="mailto:drfly.prog@gmail.com">drfly.prog@gmail.com</a></p>
+<p>Tangram Infinity is a puzzle game developed by an independent creator. We are committed to protecting your privacy. This policy explains what data is collected, how it is used, and your rights regarding that data.</p>
+<h2>Data We Collect</h2>
+<p>The App itself does not collect any personal information. However, we use third-party services that may collect data:</p>
+<ul>
+  <li><strong>Google AdMob</strong> — used to display advertisements. AdMob may collect device identifiers, IP address, and usage data to serve relevant ads.</li>
+  <li><strong>Game progress</strong> — your score and game state are stored locally on your device only using AsyncStorage. This data never leaves your device.</li>
+</ul>
+<h2>Advertising</h2>
+<p>The App displays ads through Google AdMob, including interstitial and rewarded video ads. We request non-personalized ads where possible. For more information: <a href="https://policies.google.com/technologies/partner-sites" target="_blank">policies.google.com/technologies/partner-sites</a></p>
+<h2>Data Sharing</h2>
+<p>We do not sell, trade, or share your personal data with third parties, except as required by Google AdMob as described above.</p>
+<h2>Children's Privacy</h2>
+<p>The App is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, please contact us so we can delete it.</p>
+<h2>Data Retention</h2>
+<p>Local game data is stored on your device and can be cleared at any time by uninstalling the App. We do not retain any data on our own servers.</p>
+<h2>Your Rights</h2>
+<p>Depending on your location, you may have the right to access, delete or opt out of personalized advertising. On Android: Settings → Google → Ads. On iOS: Settings → Privacy → Tracking.</p>
+<h2>Changes to This Policy</h2>
+<p>We may update this Privacy Policy from time to time. Continued use of the App after changes constitutes acceptance of the new policy.</p>
+<h2>Contact</h2>
+<p><a href="mailto:drfly.prog@gmail.com">drfly.prog@gmail.com</a></p>
     </div>
   </div>
 </div>
 
-<!-- MODAL: SUDOKU -->
+<!-- MODAL: SUDOKU INFINITY -->
 <div class="modal-overlay" id="modal-sudoku" onclick="if(event.target===this)closeModal('sudoku')">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('sudoku')">✕</button>
@@ -406,32 +417,32 @@
     <div class="modal-date">Last updated: March 6, 2026</div>
     <div class="modal-body">
       <h2>Overview</h2>
-      <p>Sudoku Infinity is a puzzle game developed by an independent creator. We are committed to protecting your privacy. This policy explains what data is collected, how it is used, and your rights regarding that data.</p>
-      <h2>Data We Collect</h2>
-      <p>The App itself does not collect any personal information. However, we use third-party services that may collect data:</p>
-      <ul>
-        <li><strong>Google AdMob</strong> — used to display advertisements. AdMob may collect device identifiers, IP address, and usage data to serve relevant ads.</li>
-        <li><strong>Game progress</strong> — your score and game state are stored locally on your device only using AsyncStorage. This data never leaves your device.</li>
-      </ul>
-      <h2>Advertising</h2>
-      <p>The App displays ads through Google AdMob, including interstitial and rewarded video ads. We request non-personalized ads where possible. For more information: <a href="https://policies.google.com/technologies/partner-sites" target="_blank">policies.google.com/technologies/partner-sites</a></p>
-      <h2>Data Sharing</h2>
-      <p>We do not sell, trade, or share your personal data with third parties, except as required by Google AdMob as described above.</p>
-      <h2>Children's Privacy</h2>
-      <p>The App is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, please contact us so we can delete it.</p>
-      <h2>Data Retention</h2>
-      <p>Local game data is stored on your device and can be cleared at any time by uninstalling the App. We do not retain any data on our own servers.</p>
-      <h2>Your Rights</h2>
-      <p>Depending on your location, you may have the right to access, delete or opt out of personalized advertising. On Android: Settings → Google → Ads. On iOS: Settings → Privacy → Tracking.</p>
-      <h2>Changes to This Policy</h2>
-      <p>We may update this Privacy Policy from time to time. Continued use of the App after changes constitutes acceptance of the new policy.</p>
-      <h2>Contact</h2>
-      <p><a href="mailto:drfly.prog@gmail.com">drfly.prog@gmail.com</a></p>
+<p>Sudoku Infinity is a puzzle game developed by an independent creator. We are committed to protecting your privacy. This policy explains what data is collected, how it is used, and your rights regarding that data.</p>
+<h2>Data We Collect</h2>
+<p>The App itself does not collect any personal information. However, we use third-party services that may collect data:</p>
+<ul>
+  <li><strong>Google AdMob</strong> — used to display advertisements. AdMob may collect device identifiers, IP address, and usage data to serve relevant ads.</li>
+  <li><strong>Game progress</strong> — your score and game state are stored locally on your device only using AsyncStorage. This data never leaves your device.</li>
+</ul>
+<h2>Advertising</h2>
+<p>The App displays ads through Google AdMob, including interstitial and rewarded video ads. We request non-personalized ads where possible. For more information: <a href="https://policies.google.com/technologies/partner-sites" target="_blank">policies.google.com/technologies/partner-sites</a></p>
+<h2>Data Sharing</h2>
+<p>We do not sell, trade, or share your personal data with third parties, except as required by Google AdMob as described above.</p>
+<h2>Children's Privacy</h2>
+<p>The App is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, please contact us so we can delete it.</p>
+<h2>Data Retention</h2>
+<p>Local game data is stored on your device and can be cleared at any time by uninstalling the App. We do not retain any data on our own servers.</p>
+<h2>Your Rights</h2>
+<p>Depending on your location, you may have the right to access, delete or opt out of personalized advertising. On Android: Settings → Google → Ads. On iOS: Settings → Privacy → Tracking.</p>
+<h2>Changes to This Policy</h2>
+<p>We may update this Privacy Policy from time to time. Continued use of the App after changes constitutes acceptance of the new policy.</p>
+<h2>Contact</h2>
+<p><a href="mailto:drfly.prog@gmail.com">drfly.prog@gmail.com</a></p>
     </div>
   </div>
 </div>
 
-<!-- MODAL: BALL -->
+<!-- MODAL: BALL CONTAMINATION -->
 <div class="modal-overlay" id="modal-ball" onclick="if(event.target===this)closeModal('ball')">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('ball')">✕</button>
@@ -440,30 +451,31 @@
     <div class="modal-date">Last updated: March 6, 2026</div>
     <div class="modal-body">
       <h2>Overview</h2>
-      <p>Ball Contamination is a physics puzzle game developed by an independent creator. We are committed to protecting your privacy. This policy explains what data is collected, how it is used, and your rights regarding that data.</p>
-      <h2>Data We Collect</h2>
-      <p>The App itself does not collect any personal information. However, we use third-party services that may collect data:</p>
-      <ul>
-        <li><strong>Google AdMob</strong> — used to display advertisements. AdMob may collect device identifiers, IP address, and usage data to serve relevant ads.</li>
-        <li><strong>Game progress</strong> — your score and game state are stored locally on your device only using AsyncStorage. This data never leaves your device.</li>
-      </ul>
-      <h2>Advertising</h2>
-      <p>The App displays ads through Google AdMob, including interstitial and rewarded video ads. We request non-personalized ads where possible. For more information: <a href="https://policies.google.com/technologies/partner-sites" target="_blank">policies.google.com/technologies/partner-sites</a></p>
-      <h2>Data Sharing</h2>
-      <p>We do not sell, trade, or share your personal data with third parties, except as required by Google AdMob as described above.</p>
-      <h2>Children's Privacy</h2>
-      <p>The App is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, please contact us so we can delete it.</p>
-      <h2>Data Retention</h2>
-      <p>Local game data is stored on your device and can be cleared at any time by uninstalling the App. We do not retain any data on our own servers.</p>
-      <h2>Your Rights</h2>
-      <p>Depending on your location, you may have the right to access, delete or opt out of personalized advertising. On Android: Settings → Google → Ads. On iOS: Settings → Privacy → Tracking.</p>
-      <h2>Changes to This Policy</h2>
-      <p>We may update this Privacy Policy from time to time. Continued use of the App after changes constitutes acceptance of the new policy.</p>
-      <h2>Contact</h2>
-      <p><a href="mailto:drfly.prog@gmail.com">drfly.prog@gmail.com</a></p>
+<p>Ball Contamination is a physics puzzle game developed by an independent creator. We are committed to protecting your privacy. This policy explains what data is collected, how it is used, and your rights regarding that data.</p>
+<h2>Data We Collect</h2>
+<p>The App itself does not collect any personal information. However, we use third-party services that may collect data:</p>
+<ul>
+  <li><strong>Google AdMob</strong> — used to display advertisements. AdMob may collect device identifiers, IP address, and usage data to serve relevant ads.</li>
+  <li><strong>Game progress</strong> — your score and game state are stored locally on your device only using AsyncStorage. This data never leaves your device.</li>
+</ul>
+<h2>Advertising</h2>
+<p>The App displays ads through Google AdMob, including interstitial and rewarded video ads. We request non-personalized ads where possible. For more information: <a href="https://policies.google.com/technologies/partner-sites" target="_blank">policies.google.com/technologies/partner-sites</a></p>
+<h2>Data Sharing</h2>
+<p>We do not sell, trade, or share your personal data with third parties, except as required by Google AdMob as described above.</p>
+<h2>Children's Privacy</h2>
+<p>The App is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, please contact us so we can delete it.</p>
+<h2>Data Retention</h2>
+<p>Local game data is stored on your device and can be cleared at any time by uninstalling the App. We do not retain any data on our own servers.</p>
+<h2>Your Rights</h2>
+<p>Depending on your location, you may have the right to access, delete or opt out of personalized advertising. On Android: Settings → Google → Ads. On iOS: Settings → Privacy → Tracking.</p>
+<h2>Changes to This Policy</h2>
+<p>We may update this Privacy Policy from time to time. Continued use of the App after changes constitutes acceptance of the new policy.</p>
+<h2>Contact</h2>
+<p><a href="mailto:drfly.prog@gmail.com">drfly.prog@gmail.com</a></p>
     </div>
   </div>
 </div>
+<!-- MODALS-END -->
 
 <script>
   function openModal(id) {
@@ -475,7 +487,7 @@
     document.body.style.overflow = '';
   }
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') ['tangram','sudoku','ball'].forEach(id => closeModal(id));
+    if (e.key === 'Escape') /* MODAL-IDS-START */['tangram','sudoku','ball']/* MODAL-IDS-END */.forEach(id => closeModal(id));
   });
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
